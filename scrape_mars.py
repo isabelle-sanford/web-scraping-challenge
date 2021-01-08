@@ -11,7 +11,7 @@ def visit_url(url, b):
     return soup
 
 
-def scrape(): 
+def scraper(): 
     # Set up splinter browser
     executable_path = {'executable_path': 'chromedriver.exe'}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -82,10 +82,12 @@ def scrape():
         
         hemi_img_urls.append({'name': name, 'url': img_link})
 
+    browser.quit()
 
     #stuff to return
-    title
-    description
-    full_size_img
-    hemi_img_urls
+    final_dict = {"title": title, "description": description, 
+                "featured": full_size_img, 
+                "table": "facts_table.html", 
+                "hemi_imgs": hemi_img_urls}
 
+    return final_dict

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+    </div>
+
+    <h2>Most recent Mars news:</h2>
+    <h3>{{ data.title}}</h3>
+    <p>{{ data.description}} </p>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Featured Mars image:</h2>
+                <img src="{{ data.featured }}" alt="Mars">
+            </div>
+            <div class="col-md-4">
+                <h3>Mars Facts</h3>
+                {{ data.table }}
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <h2>Mars Hemispheres</h2>
+
+                <!-- maybe use for loop? -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="{{ data.hemi_imgs[0]['url'] }}" alt="{{ data.hemi_imgs[0]['name'] }}">
+                        <p>   </p>
+                        <img src="{{ data.hemi_imgs[1]['url'] }}" alt="{{ data.hemi_imgs[1]['name'] }}">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ data.hemi_imgs[3]['url'] }}" alt="{{ data.hemi_imgs[3]['name'] }}">
+                        <p>   </p>
+                        <img src="{{ data.hemi_imgs[4]['url'] }}" alt="{{ data.hemi_imgs[4]['name'] }}">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+  </div>
+</body>
+
+</html>
