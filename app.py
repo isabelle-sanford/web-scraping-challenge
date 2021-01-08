@@ -13,7 +13,7 @@ def home():
     mars_record = mongo.db.collection.find_one()
 
     # Return template and data
-    return render_template("index.html", vacation=mars_record)
+    return render_template("index.html", data=mars_record)
 
 
 @app.route("/scrape")
