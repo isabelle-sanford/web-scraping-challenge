@@ -50,7 +50,7 @@ def scraper():
 
     table = facts_tables[0] # get first (and only) table
     table.to_html('facts_table.html') # make html file of table
-    final_table = table.to_html()
+    final_table = table.to_html(index = False, header = False)
 
     print("TABLE DONE")
 
