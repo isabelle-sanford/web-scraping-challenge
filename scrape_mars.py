@@ -6,7 +6,7 @@ import pandas as pd
 # function to visit a site and get its html
 def visit_url(url, b):
     b.visit(url)
-    time.sleep(10) # gives the browser time to load; probably unduly long but satellite internet is Bad
+    time.sleep(5) # gives the browser time to load; probably unduly long but satellite internet is Bad
     soup = BeautifulSoup(b.html, 'html.parser')
     return soup
 
@@ -50,6 +50,9 @@ def scraper():
 
     table = facts_tables[0] # get first (and only) table
     table.to_html('facts_table.html') # make html file of table
+    final_table = table.to_html()
+
+    print("TABLE DONE")
 
 
 # -----------PART 4: Mars Hemispheres-------------------------
@@ -64,14 +67,18 @@ def scraper():
     base_hemi_url = 'https://astrogeology.usgs.gov'
     hemi_img_urls = []
 
+    print(links[0])
+
     # for loop pulling hemisphere name & full-size-link from each link
     for l in links:
         # get html
         curr_soup = visit_url(base_hemi_url + l, browser)
-        
-        # full size image link
-        img_link = curr_soup.ul.find_all('a')[1].get('href')
-        
+        try:
+            # full size image link
+            img_link = curr_soup.ul.find_all('a')[0].get('href') # .tif download not working
+        except:
+            img_link = " "
+            
         # hemisphere from title
         temp_name = curr_soup.h2.text
 
@@ -87,7 +94,7 @@ def scraper():
     #stuff to return
     final_dict = {"title": title, "description": description, 
                 "featured": full_size_img, 
-                "table": "facts_table.html", 
+                "table": final_table, 
                 "hemi_imgs": hemi_img_urls}
 
     return final_dict
