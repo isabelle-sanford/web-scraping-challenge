@@ -12,16 +12,19 @@
 </head>
 
 <body>
+    <!-- Title and scraper button -->
   <div class="container-fluid">
     <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
     </div>
 
+    <!-- Mars news -->
     <h2>Most recent Mars news:</h2>
     <h3>{{ data.title}}</h3>
     <p>{{ data.description}} </p>
 
+    <!-- featured image, left side -->
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -30,20 +33,19 @@
                     <img src="{{ data.featured }}" alt="Mars" class="img-thumbnail">
                 </div>
             </div>
+
+            <!-- mars facts table, right side -->
             <div class="col-md-4">
                 <h3>Mars Facts</h3>
-<!--                 
-                <object data="../filename.html"></object> -->
-                <!-- <iframe src="../facts_table.html"></iframe> -->
-                <div>{{ data.table | safe}}</div>>
+                <!-- 'safe' tells jinja to read in the html without escaping it -->
+                <div>{{ data.table | safe}}</div>> 
             </div>
         </div>
 
+        <!-- hemisphere pictures -->
         <div class="container-fluid">
             <div class="jumbotron">
                 <h2>Mars Hemispheres</h2>
-
-                <!-- maybe use for loop? -->
                 <div class="row">
                     <div class="col-md-6">
                         <div class="thumbnail">
@@ -68,20 +70,7 @@
 
         </div>
     </div>
-
-
-
-
   </div>
 </body>
 
 </html>
-
-<!--                         <img src="{{ data.hemi_imgs[0]['url'] }}" alt="{{ data.hemi_imgs[0]['name'] }}">
-                        <p>   </p>
-                        <img src="{{ data.hemi_imgs[1]['url'] }}" alt="{{ data.hemi_imgs[1]['name'] }}">
-                    </div>
-                    <div class="col-md-6">
-                        <img src="{{ data.hemi_imgs[2]['url'] }}" alt="{{ data.hemi_imgs[2]['name'] }}">
-                        <p>   </p>
-                        <img src="{{ data.hemi_imgs[3]['url'] }}" alt="{{ data.hemi_imgs[3]['name'] }}"> -->
