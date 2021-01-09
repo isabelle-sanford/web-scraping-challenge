@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+    </div>
+
+    <h2>Most recent Mars news:</h2>
+    <h3>{{ data.title}}</h3>
+    <p>{{ data.description}} </p>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Featured Mars image:</h2>
+                <div class="thumbnail">
+                    <img src="{{ data.featured }}" alt="Mars" class="img-thumbnail">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h3>Mars Facts</h3>
+<!--                 
+                <object data="../filename.html"></object> -->
+                <!-- <iframe src="../facts_table.html"></iframe> -->
+                <div>{{ data.table | safe}}</div>>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <h2>Mars Hemispheres</h2>
+
+                <!-- maybe use for loop? -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="thumbnail">
+                            <img src="{{ data.hemi_imgs[0]['url'] }}" alt="{{ data.hemi_imgs[0]['name'] }}" class="img-thumbnail">
+                        </div>                       
+                        <p>   </p>
+                        <div class="thumbnail">
+                            <img src="{{ data.hemi_imgs[1]['url'] }}" alt="{{ data.hemi_imgs[1]['name'] }}" class="img-thumbnail">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="thumbnail">
+                            <img src="{{ data.hemi_imgs[2]['url'] }}" alt="{{ data.hemi_imgs[2]['name'] }}" class="img-thumbnail">
+                        </div>
+                        <p>   </p>
+                        <div class="thumbnail">
+                            <img src="{{ data.hemi_imgs[3]['url'] }}" alt="{{ data.hemi_imgs[3]['name'] }}" class="img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+  </div>
+</body>
+
+</html>
+
+<!--                         <img src="{{ data.hemi_imgs[0]['url'] }}" alt="{{ data.hemi_imgs[0]['name'] }}">
+                        <p>   </p>
+                        <img src="{{ data.hemi_imgs[1]['url'] }}" alt="{{ data.hemi_imgs[1]['name'] }}">
+                    </div>
+                    <div class="col-md-6">
+                        <img src="{{ data.hemi_imgs[2]['url'] }}" alt="{{ data.hemi_imgs[2]['name'] }}">
+                        <p>   </p>
+                        <img src="{{ data.hemi_imgs[3]['url'] }}" alt="{{ data.hemi_imgs[3]['name'] }}"> -->
